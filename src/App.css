@@ -1,0 +1,48 @@
+/* Стиль для всього контейнера */
+.app-container {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Стиль для Header та меню */
+.header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  border-radius: 8px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Відстань між пунктами меню */
+  padding: 0;
+}
+
+.nav-menu li {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-menu li:hover {
+  color: #61dafb; /* Колір при наведенні */
+}
+
+/* Стиль для Main (привітальний текст) */
+.main-content {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+}
+
+/* Стиль для Footer */
+.footer {
+  margin-top: 50px;
+  border-top: 1px solid #ddd;
+  color: #888;
+}
