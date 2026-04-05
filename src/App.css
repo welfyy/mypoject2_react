@@ -1,4 +1,5 @@
-/* Стиль для всього контейнера */
+/* --- СТАІ СТИЛІ (База, Header, Footer) --- */
+
 .app-container {
   font-family: Arial, sans-serif;
   max-width: 1200px;
@@ -7,7 +8,6 @@
   text-align: center;
 }
 
-/* Стиль для Header та меню */
 .header {
   background-color: #282c34;
   padding: 20px;
@@ -19,7 +19,7 @@
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 30px; /* Відстань між пунктами меню */
+  gap: 30px; 
   padding: 0;
 }
 
@@ -29,10 +29,9 @@
 }
 
 .nav-menu li:hover {
-  color: #61dafb; /* Колір при наведенні */
+  color: #61dafb;
 }
 
-/* Стиль для Main (привітальний текст) */
 .main-content {
   margin: 40px 0;
   padding: 20px;
@@ -40,9 +39,81 @@
   border-radius: 8px;
 }
 
-/* Стиль для Footer */
 .footer {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   color: #888;
+}
+
+/* --- НОВІ СТИЛІ (Для карток книг та списку) --- */
+
+.book-list {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.book-card {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  width: 220px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: left; /* Текст всередині картки краще зліва */
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.book-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Щоб картинки не розтягувались */
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.book-card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.book-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.counter-section {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.buy-button {
+  background-color: #282c34;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+.buy-button:hover {
+  background-color: #61dafb;
+  color: #282c34;
 }
