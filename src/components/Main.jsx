@@ -1,4 +1,7 @@
-import BookCard from './BookCard'
+import { useState, useEffect } from 'react';
+import BookCard from './BookCard';
+import Spinner from './Spinner'; 
+import PromoBanner from './PromoBanner'; 
 
 const books = [
   { 
@@ -25,12 +28,31 @@ const books = [
 ];
 
 export default function Main() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <main className="main-content">
+      <PromoBanner />
+      
       <h1>Наш каталог книг</h1>
       <div className="book-list">
         {books.map((book) => (
-          <BookCard key={book.id} data={book} />
+          <BookCard 
+            key={book.id} 
+            data={book} 
+            isPromo={book.id === 1} 
+          />
         ))}
       </div>
     </main>

@@ -1,24 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import PurchaseControl from './PurchaseControl';
 
-export default function BookCard({ data }) {
-  // Створюємо стан для лічильника, початкове значення 0
-  const [count, setCount] = useState(0);
+// Додаємо isPromo у пропси (деструктуризація)
+export default function BookCard({ data, isPromo }) {
+  const [count, setCount] = useState(() => {
+    const savedCount = localStorage.getItem(`book-count-${data.id}`);
+    return savedCount ? parseInt(savedCount) : 0;
+  });
 
-  const handleBuy = () => {
+  useEffect(() => {
+    localStorage.setItem(`book-count-${data.id}`, count);
+  }, [count, data.id]);
+
+  const handleIncrement = () => {
     setCount(count + 1);
   };
 
   return (
-    <div className="book-card" style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '10px', width: '200px' }}>
-      <img src={data.cover} alt={data.title} style={{ width: '100%' }} />
+    /* Додаємо умову: якщо isPromo true, додаємо клас 'promo-border' */
+    <div className={`book-card ${isPromo ? 'promo-border' : ''}`}>
+      <img src={data.cover} alt={data.title} />
       <h3>{data.title}</h3>
       <p>Автор: {data.author}</p>
       <p>Ціна: <strong>{data.price} грн</strong></p>
       
-      <div className="counter-section">
-        <p>Кількість: {count}</p>
-        <button onClick={handleBuy} className="buy-button">Купити</button>
-      </div>
+      <PurchaseControl count={count} onAdd={handleIncrement} />
     </div>
   );
 }
