@@ -24,12 +24,19 @@
 }
 
 .nav-menu li {
-  cursor: pointer;
   font-weight: bold;
 }
 
-.nav-menu li:hover {
-  color: #61dafb;
+/* Новий стиль для посилань у меню */
+.nav-link {
+  color: white !important; /* Робимо текст білим */
+  text-decoration: none;   /* Прибираємо підкреслення */
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: #61dafb !important; /* Блакитний при наведенні */
 }
 
 .main-content {
@@ -120,14 +127,14 @@
 
 /* Стиль для акційної обводки */
 .promo-border {
-  border: 3px solid #ff4d4d !important; /* Червоний як на банері */
+  border: 3px solid #ff4d4d !important;
   box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
-  transform: scale(1.03); /* Трохи збільшуємо акційну картку */
+  transform: scale(1.03);
   z-index: 2;
 }
 
 .promo-border:hover {
-  transform: scale(1.05) translateY(-5px); /* Покращений ховер для акції */
+  transform: scale(1.05) translateY(-5px);
 }
 
 /* Стиль для спінера (анімація) */
@@ -144,4 +151,15 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Стиль для посилання "Детальніше" у картці */
+.details-link {
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.3s;
+}
+
+.details-link:hover {
+  opacity: 0.7;
 }
