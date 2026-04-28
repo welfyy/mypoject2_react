@@ -9,6 +9,8 @@ export default function Header() {
           <li><Link to="/" className="nav-link">Головна</Link></li>
           <li><Link to="/catalog" className="nav-link">Каталог</Link></li>
           <li><Link to="/about" className="nav-link">Про нас</Link></li>
+          {/* Новий пункт меню для лабораторної роботи */}
+          <li><Link to="/contacts" className="nav-link">Контакти</Link></li>
         </ul>
       </nav>
     </header>

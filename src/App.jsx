@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import CatalogPage from './pages/CatalogPage';
 import BookDetails from './pages/BookDetails';
+import ContactPage from './pages/ContactPage'; // 1. Додаємо імпорт нової сторінки
 
 function App() {
   return (
@@ -13,14 +14,17 @@ function App() {
         <Header />
         
         <Routes>
-          {/* Головна сторінка (можна додати опис або банер) */}
+          {/* Головна сторінка */}
           <Route path="/" element={<HomePage />} />
           
-          {/* Сторінка з каталогом (твій колишній Main) */}
+          {/* Сторінка з каталогом */}
           <Route path="/catalog" element={<CatalogPage />} />
           
           {/* Динамічна сторінка книги */}
           <Route path="/book/:id" element={<BookDetails />} />
+
+          {/* 2. Додаємо маршрут для сторінки контактів */}
+          <Route path="/contacts" element={<ContactPage />} />
         </Routes>
 
         <Footer />
