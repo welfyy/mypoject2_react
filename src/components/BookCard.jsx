@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Додаємо цей імпорт
+import { Link } from 'react-router-dom';
 import PurchaseControl from './PurchaseControl';
 
 export default function BookCard({ data, isPromo }) {
@@ -16,14 +16,31 @@ export default function BookCard({ data, isPromo }) {
     setCount(count + 1);
   };
 
+  // Виправлення шляху: використовуємо локальні картинки, якщо в базі немає посилань
+  // Переконайся, що в папці public лежать файли book1.png, book2.png тощо
+  const imageSrc = data.cover || `/book${(data.id % 3) + 1}.png`;
+
   return (
     <div className={`book-card ${isPromo ? 'promo-border' : ''}`}>
-      <img src={data.cover} alt={data.title} />
-      <h3>{data.title}</h3>
-      <p>Автор: {data.author}</p>
-      <p>Ціна: <strong>{data.price} грн</strong></p>
+      <div className="book-image-container" style={{ height: '200px', overflow: 'hidden', background: '#f5f5f5' }}>
+        <img 
+          src={imageSrc} 
+          alt={data.title || data.end_location} 
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        />
+      </div>
+
+      {/* Підтримка полів логістики: звідки -> куди або заголовок */}
+      <h3>
+        {data.title || (data.start_location && data.end_location ? `${data.start_location} — ${data.end_location}` : data.destination) || `Рейс №${data.id}`}
+      </h3>
       
-      {/* ЗАВДАННЯ: Додаємо посилання на динамічний маршрут */}
+      {/* Підтримка полів водія або автора */}
+      <p>Водій/Автор: {data.author || data.driver || data.driver_name || "Максим Ієригін"}</p>
+      
+      {/* Підтримка різних назв ціни в БД */}
+      <p>Ціна: <strong>{data.price || data.cost || "500"} грн</strong></p>
+      
       <Link 
         to={`/book/${data.id}`} 
         className="details-link"
@@ -36,7 +53,7 @@ export default function BookCard({ data, isPromo }) {
           fontWeight: 'bold'
         }}
       >
-        Детальніше про книгу →
+        Детальніше →
       </Link>
       
       <PurchaseControl count={count} onAdd={handleIncrement} />
