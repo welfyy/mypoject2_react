@@ -16,8 +16,6 @@ export default function BookCard({ data, isPromo }) {
     setCount(count + 1);
   };
 
-  // Виправлення шляху: використовуємо локальні картинки, якщо в базі немає посилань
-  // Переконайся, що в папці public лежать файли book1.png, book2.png тощо
   const imageSrc = data.cover || `/book${(data.id % 3) + 1}.png`;
 
   return (
